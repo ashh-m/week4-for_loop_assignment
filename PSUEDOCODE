@@ -1,0 +1,42 @@
+START
+
+// Initialize an empty list to store grades
+INITIALIZE an empty list named 'grades'
+
+PRINT "Please enter 10 floating-point grades:"
+
+//use a for loop to iterate exactly 10 times.
+
+FOR i FROM 1 TO 10:
+
+    // Use inner validation loop to ensure number is entered
+    WHILE 'isValid' to false:
+        TRY:
+            PROMPT user to "Enter grade #[i]: "
+            READ user_input
+            CONVERT user_input to a float and store in 'grade'
+
+
+                //If conversion succeeds, add to list and exit validation 
+                APPEND 'grade' to the 'grades' list
+                SET 'isValid' to true
+            CATCH (if user_input is not a valid float):
+                PRINT "Invalid input. Please enter a valid number (99.9)
+            END TRY
+        END WHILE
+    END FOR 
+
+
+    //Calculate statistics using the 'grades' list
+    CALCULATE 'total_sum' = sum of all items in 'grades'
+    CALCULATE 'average' = 'total_sum' / 10
+    FIND 'maximum' = the largest value in 'grades'
+    FIND 'minimum' = the smallear value in 'grades'
+
+
+    //Print the final results
+    PRINT "--- Grade statistics ---"
+    PRINT "Average: " + 'average'
+    PRINT "Maximum: " + 'maximum'
+    PRINT "Minimum: " + 'minimum'
+END
